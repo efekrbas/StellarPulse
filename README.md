@@ -150,6 +150,8 @@ stellar network add testnet --rpc-url https://soroban-testnet.stellar.org --netw
 stellar keys generate deployer --network testnet
 ```
 
+> **Note:** If you get an error "identity already exists", you can skip this step or use a different name like `deployer2`.
+
 ### Step 3: Fund the Account
 
 ```bash
