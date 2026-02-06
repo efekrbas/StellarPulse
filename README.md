@@ -181,7 +181,7 @@ stellar contract invoke --id <CONTRACT_ID> --source deployer --network testnet -
 Edit `frontend/src/services/soroban.ts`:
 
 ```typescript
-export const CONTRACT_ID = "YOUR_CONTRACT_ID_HERE";
+export const CONTRACT_ID = "CDAQO62U3LYICOAJJJYFMY6PMJ4J4AMKZKAHR7RYNR3CWAFQHXWNP3GD";
 ```
 
 ### Step 7: Run the Frontend
@@ -208,40 +208,27 @@ cargo test
 #### Check Campaign Status
 
 ```bash
-stellar contract invoke \
-  --id <CONTRACT_ID> \
-  --network testnet \
-  -- \
-  get_status
+stellar contract invoke --id <CONTRACT_ID> --source-account deployer --network testnet -- get_status
 ```
 
 #### Make a Test Deposit
 
 ```bash
-# Generate a contributor account
+# Generate a contributor account (skip if already exists)
 stellar keys generate contributor --network testnet
 stellar keys fund contributor --network testnet
 
-# Deposit 10 XLM (100000000 stroops)
-stellar contract invoke \
-  --id <CONTRACT_ID> \
-  --source contributor \
-  --network testnet \
-  -- \
-  deposit \
-  --contributor <CONTRIBUTOR_PUBLIC_KEY> \
-  --amount 100000000
+# Get contributor public key
+stellar keys address contributor
+
+# Deposit 10 XLM (100000000 stroops) - replace <CONTRIBUTOR_PUBLIC_KEY> with actual key
+stellar contract invoke --id <CONTRACT_ID> --source-account contributor --network testnet -- deposit --contributor <CONTRIBUTOR_PUBLIC_KEY> --amount 100000000
 ```
 
 #### Check Deposit Balance
 
 ```bash
-stellar contract invoke \
-  --id <CONTRACT_ID> \
-  --network testnet \
-  -- \
-  get_deposit \
-  --contributor <CONTRIBUTOR_PUBLIC_KEY>
+stellar contract invoke --id <CONTRACT_ID> --source-account deployer --network testnet -- get_deposit --contributor <CONTRIBUTOR_PUBLIC_KEY>
 ```
 
 ### Frontend Testing
