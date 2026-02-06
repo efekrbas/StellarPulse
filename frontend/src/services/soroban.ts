@@ -4,8 +4,8 @@ import * as StellarSdk from "@stellar/stellar-sdk";
 const SOROBAN_RPC_URL = "https://soroban-testnet.stellar.org";
 const NETWORK_PASSPHRASE = StellarSdk.Networks.TESTNET;
 
-// Contract ID - Replace with your deployed contract ID
-export const CONTRACT_ID = "CBL7JXM2XHCHYYQEF2QKB4RS2O24CWXZ454Y7FRIXENVHQJIM4DUFZRT";
+// Contract ID - Your deployed contract on Testnet
+export const CONTRACT_ID = "CDAQO62U3LYICOAJJJYFMY6PMJ4J4AMKZKAHR7RYNR3CWAFQHXWNP3GD";
 
 // XLM Native Token SAC Wrapper on Testnet
 export const XLM_TOKEN_ADDRESS = "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC";
